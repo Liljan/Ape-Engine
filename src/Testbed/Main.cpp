@@ -1,7 +1,11 @@
 #include <SFML/Graphics.hpp>
 
+#include "Engine/Game.hpp"
+
 int main()
 {
+	Game smallGame;
+
 	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
 	while(window.isOpen())
@@ -9,7 +13,7 @@ int main()
 		sf::Event event;
 		while(window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if(event.type == sf::Event::Closed)
 				window.close();
 		}
 

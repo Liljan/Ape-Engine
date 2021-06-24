@@ -6,7 +6,7 @@ class Flappy : public Game
 {
 public:
 
-	Flappy() = default;
+	Flappy();
 
 	virtual void InitializeSystems() override;
 

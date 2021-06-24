@@ -1,28 +1,26 @@
-#include <SFML/Graphics.hpp>
-
-#include "Engine/Game.hpp"
+#include "Testbed/Flappy.hpp"
 
 int main()
 {
-	Game smallGame;
+	Flappy game;
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+	// sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
-	while(window.isOpen())
-	{
-		sf::Event event;
-		while(window.pollEvent(event))
-		{
-			if(event.type == sf::Event::Closed)
-				window.close();
-		}
+	//while(window.isOpen())
+	//{
+	//	sf::Event event;
+	//	while(window.pollEvent(event))
+	//	{
+	//		if(event.type == sf::Event::Closed)
+	//			window.close();
+	//	}
 
-		window.clear(sf::Color::Yellow);
+	//	window.clear(sf::Color::Yellow);
 
-		// Please draw here!
+	//	// Please draw here!
 
-		window.display();
-	}
+	//	window.display();
+	//}
 
 	return 0;
 }

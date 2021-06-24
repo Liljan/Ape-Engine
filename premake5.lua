@@ -18,7 +18,8 @@ workspace "Ape_Engine"
 	{
 		"src/",
 		"external/SFML/include",
-		"external/entt"
+		"external/entt",
+		"external/rapidjson/include"
 	}
 
 	outputdir = "build/%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"

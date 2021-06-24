@@ -1,5 +1,11 @@
 #include "Engine/Game.hpp"
 
+#include <rapidjson/document.h>
+#include <rapidjson/filereadstream.h>
+#include <cstdio>
+
+#include <iostream>
+
 void Game::Run()
 {
 	sf::Clock timer;
@@ -13,6 +19,45 @@ void Game::Run()
 		Update(dt);
 		Draw();
 	}
+}
+
+std::optional<GameWindowConfig> Game::ReadWindowConfigFromJSON(const std::string& fileName)
+{
+	FILE* file = fopen(fileName.c_str(), "rb"); // non-Windows use "r"
+
+	if(!file)
+	{
+		// print warning
+		std::cerr << "Window config file " << fileName << "was not found.\n";
+		return {};
+	}
+
+	//
+	char readBuffer[65536];
+	rapidjson::FileReadStream stream(file, readBuffer, sizeof(readBuffer));
+	fclose(file);
+
+	rapidjson::Document document;
+	document.ParseStream(stream);
+
+	if(document.HasParseError())
+	{
+		std::cerr << "The json document " << fileName << "had a parse error.\n";
+		return {};
+	}
+
+	GameWindowConfig config;
+
+	auto str = document["title"].GetString();
+
+	config.title = document["title"].GetString();
+	config.width = document["width"].GetUint();
+	config.height = document["height"].GetUint();
+	config.fullscreen = document["fullscreen"].GetBool();
+	config.resizable = document["resizeable"].GetBool();
+	config.fpsTarget = document["fps_target"].GetUint();
+	
+	return config;
 }
 
 void Game::InitializeRenderWindow(const GameWindowConfig& config)

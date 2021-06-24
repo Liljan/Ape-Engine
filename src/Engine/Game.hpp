@@ -4,10 +4,12 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <string>
+#include <optional>
 
 struct GameWindowConfig
 {
-	const char* title;
+	std::string title;
 
 	uint32 width;
 	uint32 height;
@@ -35,6 +37,7 @@ public:
 
 protected:
 
+	std::optional<GameWindowConfig> ReadWindowConfigFromJSON(const std::string& fileName);
 	void InitializeRenderWindow(const GameWindowConfig& config);
 
 	sf::RenderWindow& GetRenderWindow();

@@ -1,5 +1,7 @@
 #include "Flappy.hpp"
 
+#include <cassert>
+
 Flappy::Flappy()
 {
 	InitializeSystems();
@@ -7,19 +9,13 @@ Flappy::Flappy()
 
 void Flappy::InitializeSystems()
 {
-
 	// Mock data for reading app data.
 	// The data will be read from file later.
 
-	GameWindowConfig config;
-	config.fullscreen = false;
-	config.width = 1080;
-	config.height = 720;
-	config.resizable = false;
-	config.title = "Flappy Struts";
-	config.fpsTarget = 60;
+	auto config = ReadWindowConfigFromJSON("config.json");
+	assert(config);
 
-	InitializeRenderWindow(config);
+	InitializeRenderWindow(*config);
 }
 
 void Flappy::HandleInput()

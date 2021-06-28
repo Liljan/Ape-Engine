@@ -2,6 +2,8 @@
 
 #include "Engine/Scene/SceneFactory.hpp"
 
+#include <SFML/Window/Event.hpp>
+
 class SceneManager
 {
 public:
@@ -10,7 +12,7 @@ public:
 
 	void AddScene(uint32 id);
 
-	void ProcessInput();
+	void ProcessInput(sf::Event& event);
 	void Update(float dt);
 
 	void Draw(sf::RenderWindow& window);

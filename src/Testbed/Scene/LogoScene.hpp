@@ -7,7 +7,7 @@ class LogoScene : public Scene
 {
 	~LogoScene() = default;
 
-	virtual void HandleInput() override;
+	virtual void HandleInput(sf::Event& event) override;
 	virtual void Update(float dt) override;
 	virtual void Draw(sf::RenderWindow& window) override;
 

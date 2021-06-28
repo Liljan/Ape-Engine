@@ -9,7 +9,7 @@ class Scene
 public:
 	~Scene() = default;
 
-	virtual void HandleInput() = 0;
+	virtual void HandleInput(sf::Event& event) = 0;
 	virtual void Update(float dt) = 0;
 	virtual void Draw(sf::RenderWindow& window) = 0;
 

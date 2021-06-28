@@ -25,7 +25,8 @@ void Flappy::InitializeSystems()
 
 void Flappy::HandleInput()
 {
-	sf::RenderWindow& window = GetRenderWindow();
+	auto& window = GetRenderWindow();
+	auto& sceneManager = GetSceneManager();
 
 	sf::Event event;
 	while(window.pollEvent(event))
@@ -34,8 +35,7 @@ void Flappy::HandleInput()
 		if(event.type == sf::Event::Closed)
 			window.close();
 
-		auto& sceneManager = GetSceneManager();
-		sceneManager.ProcessInput();
+		sceneManager.ProcessInput(event);
 	}
 }
 

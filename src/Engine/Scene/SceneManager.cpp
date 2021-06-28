@@ -6,9 +6,9 @@ void SceneManager::AddScene(uint32 id)
 	m_CurrentScene->Load();
 }
 
-void SceneManager::ProcessInput()
+void SceneManager::ProcessInput(sf::Event& event)
 {
-	m_CurrentScene->HandleInput();
+	m_CurrentScene->HandleInput(event);
 }
 
 void SceneManager::Update(float dt)

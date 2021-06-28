@@ -1,6 +1,6 @@
 #include "Testbed/Scene/GameScene.hpp"
 
-void GameScene::HandleInput()
+void GameScene::HandleInput(sf::Event& event)
 {
 }
 

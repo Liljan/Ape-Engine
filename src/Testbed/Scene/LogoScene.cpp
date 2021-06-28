@@ -1,6 +1,6 @@
 #include "Testbed/Scene/LogoScene.hpp"
 
-void LogoScene::HandleInput()
+void LogoScene::HandleInput(sf::Event& event)
 {
 }
 

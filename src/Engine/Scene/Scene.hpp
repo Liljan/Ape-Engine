@@ -2,11 +2,7 @@
 
 #include "Engine/Datatypes.hpp"
 
-// Fwd declarations
-namespace sf
-{
-	class RenderWindow;
-};
+#include <SFML/Graphics/RenderWindow.hpp>
 
 class Scene
 {

@@ -17,8 +17,10 @@ void Flappy::InitializeSystems()
 
 	InitializeRenderWindow(*config);
 
-	auto dobrow = m_SceneFactory.CreateScene(SceneType::Logo);
-	auto bilbow = m_SceneFactory.CreateScene(123);
+	auto& sceneManager = GetSceneManager();
+	sceneManager.SetSceneFactory(m_SceneFactory);
+
+	sceneManager.AddScene(SceneType::Logo);	
 }
 
 void Flappy::HandleInput()
@@ -31,19 +33,22 @@ void Flappy::HandleInput()
 		// Request for closing the window
 		if(event.type == sf::Event::Closed)
 			window.close();
+
+		auto& sceneManager = GetSceneManager();
+		sceneManager.ProcessInput();
 	}
 }
 
 void Flappy::Update(float dt)
 {
-
+	auto& sceneManager = GetSceneManager();
+	sceneManager.Update(dt);
 }
 
 void Flappy::Draw()
 {
 	sf::RenderWindow& window = GetRenderWindow();
 
-	window.clear(sf::Color::Yellow);
-
-	window.display();
+	auto& sceneManager = GetSceneManager();
+	sceneManager.Draw(window);
 }

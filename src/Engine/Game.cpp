@@ -70,3 +70,8 @@ sf::RenderWindow& Game::GetRenderWindow()
 {
 	return m_Window;
 }
+
+SceneManager& Game::GetSceneManager()
+{
+	return m_SceneManager;
+}

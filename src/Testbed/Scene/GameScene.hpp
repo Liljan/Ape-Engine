@@ -3,6 +3,7 @@
 
 class GameScene : public Scene
 {
+public:
 	~GameScene() = default;
 
 	virtual void HandleInput() override;

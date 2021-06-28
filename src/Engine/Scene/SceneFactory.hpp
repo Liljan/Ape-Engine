@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Engine/Datatypes.hpp"
-
-class Scene;
+#include "Engine/Scene/Scene.hpp"
 
 class SceneFactory
 {
-	virtual ~SceneFactory() = default;
+public:
+	~SceneFactory() = default;
 
 	virtual Scene* CreateScene(uint32 Id) = 0;
 };

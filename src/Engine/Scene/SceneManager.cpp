@@ -1,5 +1,8 @@
 #include "Engine/Scene/SceneManager.hpp"
 
+#include <iostream>
+#include <cassert>
+
 void SceneManager::AddScene(uint32 id)
 {
 	m_CurrentScene = m_SceneFactory->CreateScene(id);
@@ -19,4 +22,27 @@ void SceneManager::Update(float dt)
 void SceneManager::Draw(sf::RenderWindow& window)
 {
 	m_CurrentScene->Draw(window);
+}
+
+bool SceneManager::SwitchToScene(uint32 id)
+{
+	if(id == m_CurrentSceneId)
+	{
+		std::cerr << "Warning: Trying to switch to the same scene.\n";
+		return false;
+	}
+
+	if(!m_SceneFactory->DoesSceneExist(id))
+	{
+		std::cerr << "Warning: Trying to switch to an invalid scene id.\n";
+		return false;
+	}
+	
+	m_CurrentScene->Unload();
+	m_CurrentScene = m_SceneFactory->CreateScene(id);
+	assert(m_CurrentScene);
+	
+	m_CurrentScene->Load();
+
+	return true;
 }

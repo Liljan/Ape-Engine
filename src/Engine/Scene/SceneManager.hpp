@@ -17,6 +17,8 @@ public:
 
 	void Draw(sf::RenderWindow& window);
 
+	bool SwitchToScene(uint32 id);
+
 private:
 
 	SceneFactory* m_SceneFactory = nullptr;

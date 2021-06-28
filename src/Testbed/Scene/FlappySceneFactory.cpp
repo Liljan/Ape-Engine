@@ -5,6 +5,11 @@
 
 #include <iostream>
 
+bool FlappySceneFactory::DoesSceneExist(uint32 id) const
+{
+	return id < static_cast<uint32>(SceneType::Amount);
+}
+
 Scene* FlappySceneFactory::CreateScene(uint32 id)
 {
 	const SceneType sceneType = static_cast<SceneType>(id);

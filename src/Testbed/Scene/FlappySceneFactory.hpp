@@ -9,5 +9,6 @@ public:
 	FlappySceneFactory() = default;
 	~FlappySceneFactory() = default;
 
+	bool DoesSceneExist(uint32 Id) const override;
 	Scene* CreateScene(uint32 Id) override;
 };

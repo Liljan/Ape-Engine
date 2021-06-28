@@ -8,5 +8,6 @@ class SceneFactory
 public:
 	~SceneFactory() = default;
 
+	virtual bool DoesSceneExist(uint32 Id) const = 0;
 	virtual Scene* CreateScene(uint32 Id) = 0;
 };

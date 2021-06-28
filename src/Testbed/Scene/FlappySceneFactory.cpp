@@ -1,5 +1,4 @@
 #include "Testbed/Scene/FlappySceneFactory.hpp"
-#include "Testbed/Scene/FlappySceneTypes.hpp"
 
 #include "Testbed/Scene/LogoScene.hpp"
 #include "Testbed/Scene/GameScene.hpp"

@@ -16,6 +16,9 @@ void Flappy::InitializeSystems()
 	assert(config);
 
 	InitializeRenderWindow(*config);
+
+	auto dobrow = m_SceneFactory.CreateScene(SceneType::Logo);
+	auto bilbow = m_SceneFactory.CreateScene(123);
 }
 
 void Flappy::HandleInput()

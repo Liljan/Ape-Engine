@@ -2,6 +2,9 @@
 
 #include "Engine/Game.hpp"
 
+#include "Testbed/Scene/FlappySceneFactory.hpp"
+
+
 class Flappy : public Game
 {
 public:
@@ -15,4 +18,6 @@ public:
 	virtual void Draw() override;
 
 private:
+
+	FlappySceneFactory m_SceneFactory;
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/Scene/SceneFactory.hpp"
+#include "Testbed/Scene/FlappySceneTypes.hpp"
 
 class FlappySceneFactory : public SceneFactory
 {

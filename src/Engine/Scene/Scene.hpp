@@ -4,9 +4,16 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+// Weird cross-include
+
+class SceneManager;
+
+//#include "Engine/Scene/SceneManager.hpp"
+
 class Scene
 {
 public:
+	Scene(SceneManager& sceneManager) : m_SceneManager(&sceneManager) {};
 	~Scene() = default;
 
 	virtual void HandleInput(sf::Event& event) = 0;
@@ -17,4 +24,7 @@ public:
 	virtual void Unload() = 0;
 
 	virtual uint32 GetType() const = 0;
+
+protected:
+	SceneManager* m_SceneManager = nullptr;
 };

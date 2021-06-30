@@ -6,7 +6,15 @@
 void SceneManager::AddScene(uint32 id)
 {
 	m_CurrentScene = m_SceneFactory->CreateScene(id);
+
+	assert(m_CurrentScene);
 	m_CurrentScene->Load();
+}
+
+void SceneManager::RemoveScene()
+{
+	m_CurrentScene->Unload();
+	delete m_CurrentScene;
 }
 
 void SceneManager::ProcessInput(sf::Event& event)
@@ -26,7 +34,7 @@ void SceneManager::Draw(sf::RenderWindow& window)
 
 bool SceneManager::SwitchToScene(uint32 id)
 {
-	if(id == m_CurrentSceneId)
+	if(id == m_CurrentScene->GetType())
 	{
 		std::cerr << "Warning: Trying to switch to the same scene.\n";
 		return false;
@@ -38,11 +46,8 @@ bool SceneManager::SwitchToScene(uint32 id)
 		return false;
 	}
 	
-	m_CurrentScene->Unload();
-	m_CurrentScene = m_SceneFactory->CreateScene(id);
-	assert(m_CurrentScene);
-	
-	m_CurrentScene->Load();
+	RemoveScene();
+	AddScene(id);
 
 	return true;
 }

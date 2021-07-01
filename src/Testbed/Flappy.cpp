@@ -16,11 +16,17 @@ void Flappy::InitializeSystems()
 	assert(config);
 
 	InitializeRenderWindow(*config);
+
+	auto& sceneManager = GetSceneManager();
+	sceneManager.SetSceneFactory(m_SceneFactory);
+
+	sceneManager.SwitchToScene(SceneType::Logo);
 }
 
 void Flappy::HandleInput()
 {
-	sf::RenderWindow& window = GetRenderWindow();
+	auto& window = GetRenderWindow();
+	auto& sceneManager = GetSceneManager();
 
 	sf::Event event;
 	while(window.pollEvent(event))
@@ -28,19 +34,21 @@ void Flappy::HandleInput()
 		// Request for closing the window
 		if(event.type == sf::Event::Closed)
 			window.close();
+
+		sceneManager.ProcessInput(event);
 	}
 }
 
 void Flappy::Update(float dt)
 {
-
+	auto& sceneManager = GetSceneManager();
+	sceneManager.Update(dt);
 }
 
 void Flappy::Draw()
 {
 	sf::RenderWindow& window = GetRenderWindow();
 
-	window.clear(sf::Color::Yellow);
-
-	window.display();
+	auto& sceneManager = GetSceneManager();
+	sceneManager.Draw(window);
 }

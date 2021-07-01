@@ -2,6 +2,8 @@
 
 #include "Datatypes.hpp"
 
+#include "Scene/SceneManager.hpp"
+
 #include <SFML/Graphics.hpp>
 
 #include <string>
@@ -41,7 +43,9 @@ protected:
 	void InitializeRenderWindow(const GameWindowConfig& config);
 
 	sf::RenderWindow& GetRenderWindow();
+	SceneManager& GetSceneManager();
 
 private:
 	sf::RenderWindow m_Window;
+	SceneManager m_SceneManager;
 };

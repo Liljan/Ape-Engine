@@ -2,13 +2,24 @@
 
 #include "Engine/Scene/SceneManager.hpp"
 
-LogoScene::LogoScene(SceneManager& sceneManager) : Scene(sceneManager)
+LogoScene::LogoScene(SceneManager& sceneManager)
 {
+	m_SceneManager = &sceneManager;
 }
 
 void LogoScene::HandleInput(sf::Event& event)
 {
-
+	if(event.type == sf::Event::KeyReleased)
+	{
+		switch (event.key.code)
+		{
+		case sf::Keyboard::Num1:
+			m_SceneManager->SwitchToScene(SceneType::Game);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void LogoScene::Update(float dt)

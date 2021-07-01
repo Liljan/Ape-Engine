@@ -9,7 +9,6 @@ class SceneManager;
 class Scene
 {
 public:
-	Scene(SceneManager& sceneManager);
 	~Scene() = default;
 
 	virtual void HandleInput(sf::Event& event) = 0;
@@ -22,5 +21,5 @@ public:
 	virtual uint32 GetType() const = 0;
 
 protected:
-	SceneManager& m_SceneManager;
+	SceneManager* m_SceneManager = nullptr;
 };

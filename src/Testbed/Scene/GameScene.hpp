@@ -4,7 +4,7 @@
 class GameScene : public Scene
 {
 public:
-	GameScene(SceneManager sceneManager);
+	GameScene(SceneManager& sceneManager);
 	~GameScene() = default;
 
 	virtual void HandleInput(sf::Event& event) override;

@@ -1,26 +1,25 @@
 #include "Testbed/Scene/FlappySceneFactory.hpp"
 
+#include "Engine/Scene/Scene.hpp"
+#include "Engine/Scene/SceneManager.hpp"
+
 #include "Testbed/Scene/LogoScene.hpp"
 #include "Testbed/Scene/GameScene.hpp"
 
 #include <iostream>
 
-bool FlappySceneFactory::DoesSceneExist(uint32 id) const
+Scene* FlappySceneFactory::CreateScene(uint32 id, SceneManager& sceneManager)
 {
-	return id < static_cast<uint32>(SceneType::Amount);
-}
-
-Scene* FlappySceneFactory::CreateScene(uint32 id)
-{
+	// Todo: Weird casting from uint32 to enum -> please fix
 	const SceneType sceneType = static_cast<SceneType>(id);
 
-	switch (sceneType)
+	switch(sceneType)
 	{
 		case SceneType::Logo:
-			return new LogoScene();
+			return new LogoScene(sceneManager);
 
 		case SceneType::Game:
-			return new GameScene();
+			return new GameScene(sceneManager);
 
 		default:
 		{

@@ -1,7 +1,14 @@
 #include "Testbed/Scene/LogoScene.hpp"
 
+#include "Engine/Scene/SceneManager.hpp"
+
+LogoScene::LogoScene(SceneManager& sceneManager) : Scene(sceneManager)
+{
+}
+
 void LogoScene::HandleInput(sf::Event& event)
 {
+
 }
 
 void LogoScene::Update(float dt)

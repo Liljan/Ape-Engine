@@ -1,5 +1,11 @@
 #include "Testbed/Scene/GameScene.hpp"
 
+#include "Engine/Scene/SceneManager.hpp"
+
+GameScene::GameScene(SceneManager sceneManager) : Scene(sceneManager)
+{
+}
+
 void GameScene::HandleInput(sf::Event& event)
 {
 }

@@ -1,13 +1,15 @@
 #pragma once
 
 #include "Engine/Datatypes.hpp"
-#include "Engine/Scene/Scene.hpp"
+
+// Forward declarations
+class Scene;
+class SceneManager;
 
 class SceneFactory
 {
 public:
 	~SceneFactory() = default;
 
-	virtual bool DoesSceneExist(uint32 Id) const = 0;
-	virtual Scene* CreateScene(uint32 Id) = 0;
+	virtual Scene* CreateScene(uint32 Id, SceneManager& sceneManager) = 0;
 };

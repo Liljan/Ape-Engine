@@ -19,8 +19,8 @@ void Flappy::InitializeSystems()
 
 	auto& sceneManager = GetSceneManager();
 	sceneManager.SetSceneFactory(m_SceneFactory);
-
-	sceneManager.SwitchToScene(SceneType::Logo);
+	sceneManager.SetResourceManager(GetResourceManager());
+	sceneManager.SwitchToScene(SceneType::Game);
 }
 
 void Flappy::HandleInput()

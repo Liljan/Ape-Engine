@@ -3,6 +3,7 @@
 #include "Datatypes.hpp"
 
 #include "Scene/SceneManager.hpp"
+#include "Resources/ResourceManager.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -42,10 +43,12 @@ protected:
 	std::optional<GameWindowConfig> ReadWindowConfigFromJSON(const std::string& fileName);
 	void InitializeRenderWindow(const GameWindowConfig& config);
 
-	sf::RenderWindow& GetRenderWindow();
-	SceneManager& GetSceneManager();
+	sf::RenderWindow& GetRenderWindow() { return m_Window; };
+	SceneManager& GetSceneManager() { return m_SceneManager; };
+	ResourceManager& GetResourceManager() { return m_ResourceManager; }
 
 private:
 	sf::RenderWindow m_Window;
 	SceneManager m_SceneManager;
+	ResourceManager m_ResourceManager;
 };

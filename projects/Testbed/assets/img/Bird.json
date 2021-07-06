@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "BG.png",
+	"frame": {"x":0,"y":0,"w":136,"h":43},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":136,"h":43},
+	"sourceSize": {"w":136,"h":43}
+},
+{
+	"filename": "Bird_01.png",
+	"frame": {"x":136,"y":0,"w":17,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":12},
+	"sourceSize": {"w":17,"h":12}
+},
+{
+	"filename": "Bird_02.png",
+	"frame": {"x":153,"y":0,"w":17,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":12},
+	"sourceSize": {"w":17,"h":12}
+},
+{
+	"filename": "Bird_03.png",
+	"frame": {"x":170,"y":0,"w":17,"h":12},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":12},
+	"sourceSize": {"w":17,"h":12}
+},
+{
+	"filename": "Pipe_Base.png",
+	"frame": {"x":187,"y":0,"w":22,"h":3},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":22,"h":3},
+	"sourceSize": {"w":22,"h":3}
+},
+{
+	"filename": "Pipe_Top.png",
+	"frame": {"x":209,"y":0,"w":24,"h":14},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":14},
+	"sourceSize": {"w":24,"h":14}
+},
+{
+	"filename": "Side.png",
+	"frame": {"x":0,"y":43,"w":165,"h":11},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":165,"h":11},
+	"sourceSize": {"w":165,"h":11}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Bird.png",
+	"format": "RGBA8888",
+	"size": {"w":233,"h":54},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:59406657963c3a86c4285b3b9beabb6d:a569cf1151225c4bfe12914d25022164:8ea6d007658d82e9a677a680b096c6e2$"
+}
+}

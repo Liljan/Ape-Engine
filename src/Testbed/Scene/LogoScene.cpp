@@ -1,10 +1,12 @@
 #include "Testbed/Scene/LogoScene.hpp"
 
 #include "Engine/Scene/SceneManager.hpp"
+#include "Engine/Resources/ResourceManager.hpp"
 
-LogoScene::LogoScene(SceneManager& sceneManager)
+LogoScene::LogoScene(SceneManager& sceneManager, ResourceManager& resourceManager)
 {
 	m_SceneManager = &sceneManager;
+	m_ResourceManager = &resourceManager;
 }
 
 void LogoScene::HandleInput(sf::Event& event)

@@ -1,10 +1,14 @@
 #include "Testbed/Scene/GameScene.hpp"
 
 #include "Engine/Scene/SceneManager.hpp"
+#include "Engine/Resources/ResourceManager.hpp"
 
-GameScene::GameScene(SceneManager& sceneManager)
+#include "Engine/Hasher.hpp"
+
+GameScene::GameScene(SceneManager& sceneManager, ResourceManager& resourceManager)
 {
 	m_SceneManager = &sceneManager;
+	m_ResourceManager = &resourceManager;
 }
 
 void GameScene::HandleInput(sf::Event& event)
@@ -35,8 +39,16 @@ void GameScene::Draw(sf::RenderWindow& window)
 
 void GameScene::Load()
 {
+	const std::string imagePath("assets/img/");
+
+	m_ResourceManager->LoadTexture(imagePath, "Bird.png");
+
+	const Id id = Hasher::Instance().Hash("Bird.png");
+
+	sf::Texture* tex = m_ResourceManager->GetTexture(id);
 }
 
 void GameScene::Unload()
 {
+	m_ResourceManager->UnloadTexture(Hasher::Instance().Hash("Bird.png"));
 }

@@ -7,7 +7,7 @@
 
 void SceneManager::AddScene(uint32 id)
 {
-	m_CurrentScene = m_SceneFactory->CreateScene(id, *this);
+	m_CurrentScene = m_SceneFactory->CreateScene(id, *this, *m_ResourceManager);
 
 	assert(m_CurrentScene);
 	m_CurrentScene->Load();

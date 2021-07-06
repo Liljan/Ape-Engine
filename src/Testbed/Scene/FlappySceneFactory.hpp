@@ -9,5 +9,5 @@ public:
 	FlappySceneFactory() = default;
 	~FlappySceneFactory() = default;
 
-	Scene* CreateScene(uint32 Id, SceneManager& sceneManager) override;
+	Scene* CreateScene(uint32 Id, SceneManager& sceneManager, ResourceManager& resourceManager) override;
 };

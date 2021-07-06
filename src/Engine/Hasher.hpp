@@ -15,7 +15,7 @@ public:
 		return instance;
 	}
 
-	uint32 Hash(const std::string& str) const;
+	Id Hash(const std::string& str) const;
 
 private:
 	Hasher() = default;

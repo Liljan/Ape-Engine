@@ -3,6 +3,8 @@
 #include "Engine/Scene/SceneManager.hpp"
 #include "Engine/Resources/ResourceManager.hpp"
 
+#include "Engine/Hasher.hpp"
+
 GameScene::GameScene(SceneManager& sceneManager, ResourceManager& resourceManager)
 {
 	m_SceneManager = &sceneManager;
@@ -37,9 +39,16 @@ void GameScene::Draw(sf::RenderWindow& window)
 
 void GameScene::Load()
 {
-	
+	const std::string imagePath("assets/img/");
+
+	m_ResourceManager->LoadTexture(imagePath, "Bird.png");
+
+	const Id id = Hasher::Instance().Hash("Bird.png");
+
+	sf::Texture* tex = m_ResourceManager->GetTexture(id);
 }
 
 void GameScene::Unload()
 {
+	m_ResourceManager->UnloadTexture(Hasher::Instance().Hash("Bird.png"));
 }

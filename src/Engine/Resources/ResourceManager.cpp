@@ -22,7 +22,7 @@ bool ResourceManager::LoadTexture(const std::string& path, const std::string& fi
 		return false;
 	}
 
-	const std::string fullFilePath = std::string(path) + std::string(fileName) + ".png";
+	const std::string fullFilePath = std::string(path) + std::string(fileName);
 
 	sf::Texture texture;
 	bool didLoad = texture.loadFromFile(fullFilePath);

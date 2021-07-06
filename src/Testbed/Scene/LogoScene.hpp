@@ -6,7 +6,7 @@
 class LogoScene : public Scene
 {
 public:
-	LogoScene(SceneManager& sceneManager);
+	LogoScene(SceneManager& sceneManager, ResourceManager& resourceManager);
 	~LogoScene() = default;
 
 	virtual void HandleInput(sf::Event& event) override;

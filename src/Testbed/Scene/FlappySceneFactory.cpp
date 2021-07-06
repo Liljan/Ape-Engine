@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-Scene* FlappySceneFactory::CreateScene(uint32 id, SceneManager& sceneManager)
+Scene* FlappySceneFactory::CreateScene(uint32 id, SceneManager& sceneManager, ResourceManager& resourceManager)
 {
 	// Todo: Weird casting from uint32 to enum -> please fix
 	const SceneType sceneType = static_cast<SceneType>(id);
@@ -16,10 +16,10 @@ Scene* FlappySceneFactory::CreateScene(uint32 id, SceneManager& sceneManager)
 	switch(sceneType)
 	{
 		case SceneType::Logo:
-			return new LogoScene(sceneManager);
+			return new LogoScene(sceneManager, resourceManager);
 
 		case SceneType::Game:
-			return new GameScene(sceneManager);
+			return new GameScene(sceneManager, resourceManager);
 
 		default:
 		{

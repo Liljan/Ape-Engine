@@ -1,10 +1,12 @@
 #include "Testbed/Scene/GameScene.hpp"
 
 #include "Engine/Scene/SceneManager.hpp"
+#include "Engine/Resources/ResourceManager.hpp"
 
-GameScene::GameScene(SceneManager& sceneManager)
+GameScene::GameScene(SceneManager& sceneManager, ResourceManager& resourceManager)
 {
 	m_SceneManager = &sceneManager;
+	m_ResourceManager = &resourceManager;
 }
 
 void GameScene::HandleInput(sf::Event& event)
@@ -35,6 +37,7 @@ void GameScene::Draw(sf::RenderWindow& window)
 
 void GameScene::Load()
 {
+	
 }
 
 void GameScene::Unload()

@@ -5,6 +5,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 class SceneManager;
+class ResourceManager;
 
 class Scene
 {
@@ -22,4 +23,5 @@ public:
 
 protected:
 	SceneManager* m_SceneManager = nullptr;
+	ResourceManager* m_ResourceManager = nullptr;
 };

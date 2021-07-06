@@ -4,7 +4,6 @@
 
 #include "Testbed/Scene/FlappySceneFactory.hpp"
 
-
 class Flappy : public Game
 {
 public:

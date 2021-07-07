@@ -4,6 +4,10 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
+#include <rapidjson/document.h>
+#include <rapidjson/filereadstream.h>
+#include <cstdio>
+
 #include <iostream>
 #include <memory>
 
@@ -61,4 +65,68 @@ sf::Texture* const ResourceManager::GetTexture(Id id)
 	}
 
 	return &m_Textures[id];
+}
+
+bool ResourceManager::HasSpriteAtlas(Id id) const
+{
+	return m_SpriteAtlases.find(id) != m_SpriteAtlases.end();
+}
+
+bool ResourceManager::LoadAtlas(const std::string& path, const std::string& fileName)
+{
+	const Id id = Hasher::Instance().Hash(fileName);
+
+	if(HasSpriteAtlas(id))
+	{
+		std::cerr << "Sprite atlas " << fileName << " already loaded.\n";
+		return false;
+	}
+
+	const std::string fullFilePath = std::string(path) + std::string(fileName) + ".json";
+
+	SpriteAtlas atlas;
+
+	FILE* file = fopen(fullFilePath.c_str(), "rb"); // non-Windows use "r"
+
+	if(!file)
+	{
+		// print warning
+		std::cerr << "Sprite atlas file " << fileName << "was not found.\n";
+		return false;
+	}
+
+	char readBuffer[65536];
+	rapidjson::FileReadStream stream(file, readBuffer, sizeof(readBuffer));
+	fclose(file);
+
+	rapidjson::Document document;
+	document.ParseStream(stream);
+
+	if(document.HasParseError())
+	{
+		std::cerr << "The json document " << fileName << "had a parse error.\n";
+		return {};
+	}
+
+	const auto& meta = document["meta"];
+
+	std::string textureName = meta["image"].GetString();
+
+	return true;
+}
+
+bool ResourceManager::UnloadAtlas(Id id)
+{
+	return false;
+}
+
+SpriteAtlas* const ResourceManager::GetSpriteAtlas(Id id)
+{
+	if(!HasSpriteAtlas(id))
+	{
+		std::cerr << "Texture " << id << " does not exist.\n";
+		return false;
+	}
+
+	return &m_SpriteAtlases[id];
 }

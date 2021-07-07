@@ -26,7 +26,7 @@ bool ResourceManager::LoadTexture(const std::string& path, const std::string& fi
 		return false;
 	}
 
-	const std::string fullFilePath = std::string(path) + std::string(fileName);
+	const std::string fullFilePath = std::string(path) + std::string(fileName) + ".png";
 
 	sf::Texture texture;
 	bool didLoad = texture.loadFromFile(fullFilePath);
@@ -95,7 +95,7 @@ bool ResourceManager::LoadAtlas(const std::string& path, const std::string& file
 		return false;
 	}
 
-	char readBuffer[65536];
+	char readBuffer[16384];
 	rapidjson::FileReadStream stream(file, readBuffer, sizeof(readBuffer));
 	fclose(file);
 
@@ -109,8 +109,23 @@ bool ResourceManager::LoadAtlas(const std::string& path, const std::string& file
 	}
 
 	const auto& meta = document["meta"];
-
 	std::string textureName = meta["image"].GetString();
+	textureName.erase(textureName.find_last_of("."), std::string::npos);
+
+	const bool textureLoaded = LoadTexture(path, textureName);
+	if(!textureLoaded)
+	{
+		// Todo: Error message
+		return false;
+	}
+	
+	const auto& sprites = document["frames"].GetArray();
+
+	for(const auto& element : sprites)
+	{
+		std::string name = element["filename"].GetString();
+		name.erase(name.find_last_of("."), std::string::npos);
+	}
 
 	return true;
 }
